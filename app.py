@@ -1838,49 +1838,6 @@ def similarity_detection(wb, method):
             f_jmatrix, f_jmatrix_names, j_values, features_total, D_c, D_j]
 
 
-@app.route("/features/", methods = ['GET', 'POST'])
-def get_feature_values():
-    path = 'data/UoA_small/demo-pSS-code-v3.xlsx'
-    wb = open_workbook(path)
-    sheet_names = wb.sheet_names()
-    xl = wb.sheet_by_name(sheet_names[0])
-    f = xl.row_values(0)
-    f = [x.replace('\n','') for x in f]
-    
-    feature_id = request.args.get('feature_id', type=int)
-    if(feature_id > np.size(f))|(feature_id <= 0):
-        return json.dumps({'Error':'Selected feature is out of bounds!'})
-    
-    b0 = xl.col_values(feature_id-1, 1)
-#    b = list(filter(None, b0))
-    sel_f = f[feature_id-1]
-    sel_f_values = str(b0).replace('\n','')
-    
-    b1 = xl.col_values(np.size(f)-1, 1)
-    sel_t_values = str(b1).replace('\n','')
-    dictionary = [{'Selected feature':sel_f,
-                   'Selected feature values':sel_f_values,
-                   'Target values':sel_t_values}]
-    
-    d = create_wr_io('results_feature.txt', dictionary)
-    
-    return jsonify(d)
-
-
-@app.route("/features/names/", methods = ['GET', 'POST'])
-def get_features_names():
-    path = 'data/UoA_small/demo-pSS-code-v3.xlsx'
-    wb = open_workbook(path)
-    sheet_names = wb.sheet_names()
-    xl = wb.sheet_by_name(sheet_names[0])
-    f = xl.row_values(0)
-    f = [x.replace('\n','') for x in f]
-
-    dictionary = [{'Features': f}]
-    
-    return jsonify(dictionary)
-
-
 def jsonify_data_curator(path, imputation_method_id, outlier_detection_method_id, descriptive_feature_id, wb2, bad_features_ind, bad_features_ind_metas, metas_features, cmatrix, f_cmatrix):
     outlier_detection_methods = ['z-score', 'IQR', 'Grubbs', 'None']
     imputation_methods = ['mean', 'random', 'None']
