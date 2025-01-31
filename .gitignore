@@ -1,0 +1,4 @@
+*.pyc
+results/*.xlsx
+results/*.json
+/sample_datasets
