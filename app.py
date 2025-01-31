@@ -23,7 +23,7 @@ import warnings
 from io import StringIO, BytesIO
 from datetime import datetime
 from scipy.stats import spearmanr, pearsonr, kendalltau
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from io import StringIO
 from outliers import smirnov_grubbs as grubbs
 from Orange.preprocess import Impute, Average
@@ -2390,6 +2390,7 @@ def data_curator(file_stream, file_extension, imputation_method_id, outlier_dete
     print('Time: ', np.around(stop - start, 3), 'sec')
     print()
     print("Done!")
+    sys.stdout.flush()
 
 
 def allowed_file(filename):
