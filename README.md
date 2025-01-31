@@ -5,7 +5,6 @@ The TDC tool is a flask-based application which has developed in Python 3.9 and 
 
 
 **Structure of the TDC folder**
-- hosted: a folder where the server temporarily stores the input dataset (it is removed after the execution).
 - results: a folder where the results are stored.
 - sample_datsets: includes a test input dataset (for demonstration purposes) in .xlsx, .csv and .json formats.
 - static: includes a subfolder “images” which contains the HTML logos (from EUCAIM and from FORTH).
