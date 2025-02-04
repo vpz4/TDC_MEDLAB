@@ -2188,6 +2188,8 @@ def data_curator(file_stream, file_extension, imputation_method_id, outlier_dete
     print("Loading data from memory...")
     start = timeit.default_timer()
 
+    wb = None
+
     if file_extension == 'csv':
         df = pd.read_csv(StringIO(file_stream.decode('utf-8')))
     elif file_extension == 'json':
@@ -2201,7 +2203,10 @@ def data_curator(file_stream, file_extension, imputation_method_id, outlier_dete
         df = pd.DataFrame(data, columns=columns)
     else:
         raise ValueError("Unsupported file format.")
-    
+
+    if wb is None:
+        wb = Workbook()
+
     features = df.columns
     ncols = df.shape[1]
     nrows = df.shape[0]
@@ -2390,7 +2395,6 @@ def data_curator(file_stream, file_extension, imputation_method_id, outlier_dete
     print('Time: ', np.around(stop - start, 3), 'sec')
     print()
     print("Done!")
-    sys.stdout.flush()
 
 
 def allowed_file(filename):
