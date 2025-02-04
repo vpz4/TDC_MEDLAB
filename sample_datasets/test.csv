@@ -1,0 +1,11 @@
+num_feat1,num_feat2,text_cat_feat,text_feat,bool_feat,num_missing_feat,num_missing_cat_feat,text_missing_cat_feat,text_missing_feat,bool_missing_feat,mixed_data_types,bad_feat
+0.1,0.2,severe,greece,"""true""",0.1,2,,,"""false""",,
+2.5,3,mild,usa,"""false""",0.1,4,alpha,left,,+,
+21.1,21.1,none,france,"""false""",1,1,,left,,,
+0.21,0.21,severe,greece,"""true""",2,2,beta,,"""true""",,
+100,32.5,mild,usa,"""false""",,,,middle,,2022-10-20T11:44:23Z,
+10,10,none,italy,"""true""",5.1,3,delta,middle,,,
+5.1,5.1,severe,greece,"""true""",,,,,"""true""",2,
+2.5,2.5,mild,japan,"""true""",1.3,,beta,right,,,
+7.8,7.8,none,germany,"""false""",2,,,right,"""false""",2019-11-20T11:44:23Z,
+3.4,3.4,severe,greece,"""true""",,,alpha,,,,
