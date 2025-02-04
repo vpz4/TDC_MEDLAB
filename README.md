@@ -65,11 +65,11 @@ Note: The TDC tool has a built-in functionality that calculates the Jaro distanc
 
 
 **Instructions**
-- Clone the repository from https://github.com/vpz4/TDC.
-- It is recommended that you store it in “C:/TDC” (e.g. in Windows).
+- Clone the repository from https://github.com/vpz4/TDC_MEDLAB.
+- It is recommended that you store it in “C:/TDC_MEDLAB” (e.g. in Windows).
 - Install docker and docker compose utility as prerequisites.
-- Build the docker by executing “docker build -t tdc-app .”.
-- Run “docker run -d -p 5000:5000 -v C:/TDC/results:/app/results --name tdc-app tdc-app”.
+- Build the docker by executing “docker build -t tdc_medlab-app .”.
+- Run “docker run -d -p 5000:5000 -v C:/TDC_MEDLAB/results:/app/results --name tdc_medlab-app tdc_medlab-app”.
 - The tool is accessible through a browser at: http://127.0.0.1:5000/main.
 
 
