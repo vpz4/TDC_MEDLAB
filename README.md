@@ -22,8 +22,8 @@ The TDC tool is a flask-based application which has developed in Python 3.9 and 
   - a data quality evaluation report which summarises useful metadata and feature-level diagnostics,
   - a curated dataset which is the original dataset where the problematic fields (e.g., outliers, missing values, data inconsistencies) are highlighted using colour coding,
   - a clean curated dataset which is the curated dataset where the features with bad quality (i.e. with more than 30% missing values) are automatically removed,
-  - a similarity  report which summarises the highly correlated pairs of features (if any), and
-  - another similarity report which summarises the lexically similar pairs of features (if any).
+  - a correlation similarity report which summarises the highly correlated pairs of features (if any),
+  - a lexical similarity report which summarises the lexically similar pairs of features (if any),
   - a structured .json file which includes all the information from the previous reports in a structured way to support the work of programmers towards the development of customised front-end interfaces.
 
 
