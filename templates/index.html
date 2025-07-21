@@ -55,10 +55,16 @@
     <p style="color: red;font-family: Calibri">{{ message }}</p>
     {% endif %}
 
-    <div style="display: flex; justify-content: center; align-items: center; font-family: Calibri;">
+    <!-- <div style="display: flex; justify-content: center; align-items: center; font-family: Calibri;">
         <p style="color: rgba(255, 255, 255, 0.79); margin-right: 10px;">Developed by</p>
         <img src="{{ url_for('static', filename='images/MEDLAB.png') }}" width="70" height="80">
-    </div>
+    </div> -->
+
+	<div style="display: flex; justify-content: center; align-items: center; font-family: Calibri; gap: 15px;">
+		<p style="color: rgba(255, 255, 255, 0.79); margin: 0;">Developed by</p>
+		<img src="{{ url_for('static', filename='images/MEDLAB.png') }}" width="60" height="80" alt="MEDLAB logo">
+		<img src="{{ url_for('static', filename='images/precious-logo.jpg') }}" width="70" height="80" alt="PRECIOUS logo">
+	</div>
 
 </div>
 </body>

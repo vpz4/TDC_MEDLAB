@@ -94,15 +94,24 @@ def formatNumber_v2(num):
     return [num, 0]
 
 
+# def formatNumber_v3(num):
+#     try:
+#         y = float(num)
+#         if(y % 1 == 0):
+#             return int(y)
+#         else:
+#             return y
+#     except:
+#         return num
+
 def formatNumber_v3(num):
+    if num is None or str(num).strip() in ["", "None", "nan", "NaN"]:
+        return "?"
     try:
         y = float(num)
-        if(y % 1 == 0):
-            return int(y)
-        else:
-            return y
+        return int(y) if y % 1 == 0 else y
     except:
-        return num
+        return "?" if str(num).strip() == "" else num
 
 
 def intersect(seq1, seq2):
@@ -1299,7 +1308,10 @@ def QualityAssessment_S1(data_org, c, th):
     a = np.zeros(c)
         
     for i in range(c):
-        a[i] = sum(1 for d in data_org if np.isnan(d[i]))
+        # a[i] = sum(1 for d in data_org if np.isnan(d[i]))
+
+        a[i] = sum(1 for d in data_org if d[i] is None or str(d[i]).strip() in ["?", "", "None", "nan", "NaN"] or (isinstance(d[i], float) and np.isnan(d[i])))
+
         features_missing_values.append(a[i])
         if(a[i]>=th):
             bad_features.append(data_org.domain.attributes[i].name.replace('\n',' ').replace('  ', ' '))
