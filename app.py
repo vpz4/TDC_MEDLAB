@@ -772,7 +772,7 @@ def write_curated_dataset(data_org, wb2, pos_metas, features_total, features_sta
     
     sheet_names2 = wb2.sheetnames
     sheet = wb2[sheet_names2[0]]
-    
+
     for j in range(c+len(pos_metas)):
         if(j not in pos_metas):
             if(features_state[c1] == 'bad'):
@@ -829,15 +829,25 @@ def write_curated_dataset(data_org, wb2, pos_metas, features_total, features_sta
                         elif((str(data_org[:,c1][i]).strip()[1:-1]!='?')&(features_state[c1]=='bad')):
                             if(i in list(incomp_pos[c1])):
                                 sheet1.cell(i+2,j+1,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
-                                sheet1.cell(i+2,j+1).fill = style6
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,j+1).fill = style2
+                                else:
+                                    sheet1.cell(i+2,j+1).fill = style6
                             else:
                                 sheet1.cell(i+2,j+1,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,j+1).fill = style2                        
                         elif((str(data_org[:,c1][i]).strip()[1:-1]!='?')&(features_state[c1]!='bad')):
                             if(i in list(incomp_pos[c1])):
                                 sheet1.cell(i+2,j+1,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
-                                sheet1.cell(i+2,j+1).fill = style6
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,j+1).fill = style2
+                                else:
+                                    sheet1.cell(i+2,j+1).fill = style6
                             else:
                                 sheet1.cell(i+2,j+1,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,j+1).fill = style2
                     except:
                         sheet1.cell(i+2,j+1,'?')
                         sheet1.cell(i+2,j+1).fill = style6
@@ -881,7 +891,7 @@ def write_curated_dataset(data_org, wb2, pos_metas, features_total, features_sta
                         sheet1.cell(i+2,j+1,formatNumber_v3(str('?').strip()))
                         sheet1.cell(i+2,j+1).fill = style2
                     elif((str(sheet.cell(i+1,j+1).value).strip()=='')&(features_state_metas[c2]=='bad')):
-                        sheet1.cell(i+2,j+1,formatNumber_v3(str('?').strip())) 
+                        sheet1.cell(i+2,j+1,formatNumber_v3(str('?').strip()))
                         sheet1.cell(i+2,j+1).fill = style2
                     elif((str(sheet.cell(i+1,j+1).value).strip()=='')&(features_state_metas[c2]!='bad')):
                         sheet1.cell(i+2,j+1,formatNumber_v3(str('?').strip()))
@@ -899,7 +909,7 @@ def write_curated_dataset(data_org, wb2, pos_metas, features_total, features_sta
                         else:
                             sheet1.cell(i+2,j+1,formatNumber_v3(str(sheet.cell(i+2,j+1).value).strip()))
             c2 = c2+1
-            
+
     if not os.path.exists('results'):
         os.makedirs('results')
     
