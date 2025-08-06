@@ -1150,9 +1150,14 @@ def write_curated_dataset_v2(data_org, wb2, pos_metas, features_total, features_
                         elif((str(data_org[:,c1][i]).strip()[1:-1]!='?')&(features_state[c1]!='bad')):
                             if(i in list(incomp_pos[c1])):
                                 sheet1.cell(i+2,c3,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
-                                sheet1.cell(i+2,c3).fill = style6
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,c3).fill = style2
+                                else:
+                                    sheet1.cell(i+2,c3).fill = style6
                             else:
                                 sheet1.cell(i+2,c3,formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]))
+                                if(formatNumber_v3(str(data_org[:,c1][i]).strip()[1:-1]) == '?'):
+                                    sheet1.cell(i+2,c3).fill = style2
                     except:
                         sheet1.cell(i+2,c3,'?')
                         sheet1.cell(i+2,c3).fill = style6
