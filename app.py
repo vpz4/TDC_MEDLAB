@@ -2179,7 +2179,7 @@ def handle_duplicates(path_old):
 def dataframe_to_orange(df):
     variables = []
     for column in df.columns:
-        if df[column].dtype.kind in 'biufc':  # If the column is of type binary, integer, unsigned int, float, complex
+        if df[column].dtype.kind in 'iufc':  # If the column is of type binary, integer, unsigned int, float, complex
             variables.append(Orange.data.ContinuousVariable(column))
         else:
             unique_values = df[column].astype(str).unique().tolist()
